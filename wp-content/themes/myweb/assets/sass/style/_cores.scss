@@ -1,0 +1,21 @@
+// BACGROUND
+.bg-cinza {
+	background: #f2f2f2;
+}
+
+
+
+// CORES
+.label {
+	&.vermelho {
+		background-color: $vermelho;
+	}
+
+	&.azul {
+		background-color: $azul;
+	}
+
+	&.laranja {
+		background-color: $laranja;
+	}
+}

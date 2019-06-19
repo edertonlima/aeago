@@ -44,12 +44,16 @@
 						</div>
 					</div>
 					<div class="col-3">
-						<span class="legend-footer">TELEFONE</span>
-						<span class="info-footer"><em>(62)</em> 3218-2914</span>
+						<div class="info-contato">
+							<span class="legend-footer">TELEFONE</span>
+							<span class="info-footer"><em>(62)</em> 3218-2914</span>
+						</div>
 					</div>
 					<div class="col-3">
-						<span class="legend-footer">E-MAIL</span>
-						<span class="info-footer">contato@aeago.org.br</span>
+						<div class="info-contato">
+							<span class="legend-footer">E-MAIL</span>
+							<span class="info-footer email">contato@aeago.org.br</span>
+						</div>
 					</div>
 				</div>
 				

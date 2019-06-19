@@ -135,6 +135,7 @@ button, input[type='submit'], .button {
 	border-radius: 5px;
 	border: 1px solid #ffffff;
 	@include animacao;
+	@include box-sizing();
 
 	&:hover {
 		background-color: #ffffff;
@@ -148,6 +149,13 @@ button, input[type='submit'], .button {
 		padding: 0 25px;
 	}
 
+	&.pequeno {
+		height: 39px;
+		line-height: 39px;
+		font-size: .75rem;
+		text-transform: none;
+	}
+
 	&.associar-se {
 		&:hover {
 			background-color: $azul;
@@ -156,11 +164,55 @@ button, input[type='submit'], .button {
 		}
 	}
 
+	&.btn-full {
+		width: 100%;
+	}
+
 	&.enviar {
 		margin-right: auto;
 		margin-left: auto;
 		width: 220px;
 		display: block;
+	}
+
+	&.vermelho {
+		background-color: $vermelho;
+		color: #ffffff;
+		border-color: $vermelho;
+
+		&:hover {
+			background-color: darken($vermelho, 10%);
+		}
+	}
+
+	&.laranja {
+		background-color: $laranja;
+		color: #ffffff;
+		border-color: $laranja;
+
+		&:hover {
+			background-color: darken($laranja, 10%);
+		}
+	}
+
+	&.azul-celeste {
+		background-color: $azul-celeste;
+		color: #ffffff;
+		border-color: $azul-celeste;
+
+		&:hover {
+			background-color: darken($azul-celeste, 10%);
+		}
+
+		&.transparent {
+			color: $azul-celeste;
+			background: transparent;
+
+			&:hover {
+				background-color: $azul-celeste;
+				color: #ffffff;
+			}
+		}
 	}
 }
 

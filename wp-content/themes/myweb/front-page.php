@@ -1,5 +1,216 @@
 <?php get_header(); ?>
+
+<section class="box-content">
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-9">
+			
+				<div class="curso list-curso">
+					<div class="row item-curso">
+						<div class="col-5 img-curso">
+							<span class="label nome-area azul-celeste">CURSOS</span>
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+						</div>
+
+						<div class="col-7 cont-curso">
+							<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+							<span class="data">30 de Junho, 2019</span>
+							<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos nos encaixar para participar desse tipo de negócio. Saber encontrar pessoas que estão nesse mercado também é importante para que o negócio rural dê certo. Neste curso, vamos entender um pouco melhor o setor e a economia brasileira.</p>
+						</div>
+					</div>
+
+					<div class="btn-curso">
+						<a href="#" class="button pequeno right azul-celeste transparent">mais cursos</a>
+					</div>
+				</div>
+
+				<!-- NOTÍCIAS -->
+				<div class="noticias list-noticias">
+					<div class="box-destaque noticias-destaque" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/noticias-destaque.jpg');">
+
+						<span class="label nome-area">NÓTICIAS</span>
+						<div class="box-content-destaque">
+							<span class="label laranja">GESTÃO RURAL</span>
+							<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+							<span class="data">30 de Junho, 2019</span>
+						</div>
+
+					</div>
+
+					<div class="row row-mini">
+						<div class="col-4 item-noticias">
+							<div class="img-noticias">
+								<span class="label laranja">GESTÃO RURAL</span>
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+							</div>
+
+							<div class="cont-noticias">
+								<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+								<span class="data">30 de Junho, 2019</span>
+							</div>
+						</div>
+
+						<div class="col-4 item-noticias">
+							<div class="img-noticias">
+								<span class="label laranja">GESTÃO RURAL</span>
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+							</div>
+
+							<div class="cont-noticias">
+								<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+								<span class="data">30 de Junho, 2019</span>
+							</div>
+						</div>
+
+						<div class="col-4 item-noticias">
+							<div class="img-noticias">
+								<span class="label laranja">GESTÃO RURAL</span>
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+							</div>
+
+							<div class="cont-noticias">
+								<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+								<span class="data">30 de Junho, 2019</span>
+							</div>
+						</div>
+
+						<div class="col-8 list-noticias-mini">
+							<div class="row row-mini item-noticias">
+								<div class="col-5 img-noticias">
+									<span class="label laranja">GESTÃO RURAL</span>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+								</div>
+
+								<div class="col-7 cont-noticias">
+									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+									<span class="data">30 de Junho, 2019</span>
+									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
+								</div>
+							</div>
+
+							<div class="row row-mini item-noticias">
+								<div class="col-5 img-noticias">
+									<span class="label laranja">GESTÃO RURAL</span>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+								</div>
+
+								<div class="col-7 cont-noticias">
+									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+									<span class="data">30 de Junho, 2019</span>
+									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
+								</div>
+							</div>
+
+							<div class="row row-mini item-noticias">
+								<div class="col-5 img-noticias">
+									<span class="label laranja">GESTÃO RURAL</span>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+								</div>
+
+								<div class="col-7 cont-noticias">
+									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+									<span class="data">30 de Junho, 2019</span>
+									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
+								</div>
+							</div>
+
+							<div class="row row-mini item-noticias">
+								<div class="col-5 img-noticias">
+									<span class="label laranja">GESTÃO RURAL</span>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+								</div>
+
+								<div class="col-7 cont-noticias">
+									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
+									<span class="data">30 de Junho, 2019</span>
+									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<div class="col-3">
+				<div class="sidebar">
+					
+					<div class="box-sidebar bg-cinza">
+						<h3 class="center">TORNE-SE UM ASSOCIADO</h3>
+						<p class="center">Ao associar-se, você estará contribuindo para o fortalecimento da nossa classe, além de poder aproveitar os vários benefícios que oferecemos aos nossos sócios.</p>
+						<a href="#" class="button btn-full vermelho margin-top-20">QUERO SER SÓCIO!</a>
+					</div>
+
+					<div class="box-sidebar border">
+						<h3 class=""><span>ATENDIMENTO</span></h3>
+						<div class="info-contato">
+							<span class="legend-footer">TELEFONE</span>
+							<span class="info-footer"><em>(62)</em> 3218-2914</span>
+
+							<span class="legend-footer margin-top-15">E-MAIL</span>
+							<span class="info-footer email">contato@aeago.org.br</span>
+						</div>
+					</div>
+
+					<div class="box-sidebar">
+						<div class="redes-sociais">
+							<span>SIGA-NOS</span>
+							<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="" title="FACEBOOK"><i class="fab fa-facebook-square"></i></a>
+							<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="" title="INSTAGRAM"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+
+					<div class="box-sidebar box-destaque profissional-destaque" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/profissional-destaque.jpg');">
+
+						<div class="box-content-destaque center">
+							<h2>Pedro Augusto</h2>
+							<span class="subtitulo-box">Engenheiro</span>
+							<span class="label azul">profissional em destaque</span>
+						</div>
+					</div>
+
+					<div class="box-sidebar border">
+						<h3 class=""><span>CATEGORIAS</span></h3>
+						<ul class="categorias">
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Agricultura</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Agronegócio</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Ciência</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Energia</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Florestal</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Gestão Rural</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Mercado</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Política</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Tecnologia</a></li>
+						</ul>	
+					</div>
+
+					<div class="box-sidebar bg-cinza margin-top-30">
+						<h3 class="center">NEWSLETTER</h3>
+						<p class="center">Digite seu e-mail abaixo para assinar o nosso informativo e ficar por dentro de todas as novidades!</p>
+						<a href="#" class="button btn-full laranja margin-top-20">ASSINAR</a>
+					</div>
+
+					<div class="box-sidebar box-facebook">
+						<div class="fb-page" data-href="https://www.facebook.com/associadosaeago/" data-tabs="" data-width="" data-height="130" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/associadosaeago/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/associadosaeago/">AEAGO</a></blockquote></div>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+	</div>
+</section>
+
 <?php /*
+
+
+
+
+
+
+
+
+
+
 <section class="box-content no-padding box-msg-intro">
 	
 		

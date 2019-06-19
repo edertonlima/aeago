@@ -17,7 +17,8 @@ body * {
 
 .container {
 	max-width: $width; 
-	width: 100%;
+	width: $width; 
+	//width: 100%;
 	padding: 0 $padding-container;
 	margin: 0 auto;
 	position: relative;
@@ -76,6 +77,16 @@ body * {
 
 	.col-4:nth-child(3n+1) {
 		@include clear;
+	}
+
+	&.row-mini {
+		margin-right: -15px;
+		margin-left: -15px;
+
+		[class*="col-"] {
+			padding-right: 15px; 
+			padding-left: 15px;
+		}
 	}
 }
 

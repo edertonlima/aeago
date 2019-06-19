@@ -165,6 +165,9 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 </head>
 <body <?php body_class(); ?>>
 
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.3&appId=179359752456763&autoLogAppEvents=1"></script>
+
 	<header class="header" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-header.jpg');">
 		<div class="container">
 			<a href="javascript:" class="menu-mobile"></a>

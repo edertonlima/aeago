@@ -1,6 +1,6 @@
 .footer {
 	width: 100%;
-	padding: 30px 0 0;
+	padding: 0px 0 0;
 
 	.nav {
 		background: #525252;
@@ -23,7 +23,7 @@
 	}
 
 	.content-footer {
-		background: #f7f7f7;
+		background: #f2f2f2;
 		padding: 40px 0;
 
 		.img-footer {
@@ -37,28 +37,22 @@
 			margin: 6px 0 0 20px;
 		}
 
+		.info-contato {
+			.legend-footer {
+				font-size: .85rem;
+			}
+
+			.info-footer {
+
+
+				em {
+
+				}
+			}
+		}
+
 		p {
 			padding: 0;
-		}
-
-		.legend-footer {
-			font-size: .85rem;
-			//font-weight: $light;
-			display: block;
-		}
-
-		.info-footer {
-			font-size: 1.637rem;
-			width: 100%;
-			display: block;
-
-			em {
-				font-style: normal;
-				font-size: 50%;
-				vertical-align: top;
-				position: relative;
-				top: 5px;
-			}
 		}
 
 		.col-3 {
@@ -74,7 +68,7 @@
 
 		i {
 			font-size: 0.7rem;
-			opacity: .8;
+			opacity: .7;
 			margin-right: 3px;
 		}
 	}
