@@ -27,53 +27,74 @@
 
 				<!-- NOTÍCIAS -->
 				<div class="noticias list-noticias">
-					<div class="box-destaque noticias-destaque" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/noticias-destaque.jpg');">
 
-						<span class="label nome-area">NÓTICIAS</span>
-						<div class="box-content-destaque">
-							<span class="label laranja">GESTÃO RURAL</span>
-							<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-							<span class="data">30 de Junho, 2019</span>
-						</div>
+					<!-- NOTÍCIAS DESTAQUE -->
+					<?php
+						$args_noticias = array(
+							'posts_per_page' => 1,
+							'post_type' => 'post'
+						);
 
-					</div>
+						query_posts( $args_noticias );
+						//$wp_query = new WP_Query($args_noticias);
+						while ( have_posts() ) : the_post(); 
+							$categorias = wp_get_post_terms( $post->ID, 'category' ); 
+							$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'detalhe-post' ); ?>
 
+							<div class="box-destaque noticias-destaque" style="background-image: url('<?php if($imagem[0]){ echo $imagem[0]; } ?>');">
+
+								<span class="label nome-area">NÓTICIAS</span>
+								<div class="box-content-destaque">
+									<?php foreach ( $categorias as $categoria ) { ?>
+										<span class="label laranja"><?php echo $categoria->name; ?></span>
+									<?php } ?>									
+									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+										<h2><?php the_title(); ?></h2>
+									</a>
+									<span class="data"><?php echo get_the_date(); ?></span>
+								</div>
+
+							</div>
+
+						<?php endwhile;
+						wp_reset_query();
+					?>
+					<!-- NOTÍCIAS DESTAQUE -->
+
+					<!-- NOTÍCIAS SECUNDÁRIA -->
 					<div class="row row-mini">
-						<div class="col-4 item-noticias">
-							<div class="img-noticias">
-								<span class="label laranja">GESTÃO RURAL</span>
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
-							</div>
+						<?php
+							$args_noticias = array(
+								'posts_per_page' => 3,
+								'offset' => 1,
+								'post_type' => 'post'
+							);
 
-							<div class="cont-noticias">
-								<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-								<span class="data">30 de Junho, 2019</span>
-							</div>
-						</div>
+							query_posts( $args_noticias );
+							while ( have_posts() ) : the_post(); 
+								$categorias = wp_get_post_terms( $post->ID, 'category' ); 
+								$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'mini-post' ); ?>
 
-						<div class="col-4 item-noticias">
-							<div class="img-noticias">
-								<span class="label laranja">GESTÃO RURAL</span>
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
-							</div>
+								<div class="col-4 item-noticias">
+									<div class="img-noticias">
+										<?php foreach ( $categorias as $categoria ) { ?>
+											<span class="label laranja"><?php echo $categoria->name; ?></span>
+										<?php } ?>	
+										<img src="<?php if($imagem[0]){ echo $imagem[0]; } ?>">
+									</div>
 
-							<div class="cont-noticias">
-								<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-								<span class="data">30 de Junho, 2019</span>
-							</div>
-						</div>
+									<div class="cont-noticias">
+										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+											<h2><?php the_title(); ?></h2>
+										</a>
+										<span class="data"><?php echo get_the_date(); ?></span>
+									</div>
+								</div>
 
-						<div class="col-4 item-noticias">
-							<div class="img-noticias">
-								<span class="label laranja">GESTÃO RURAL</span>
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
-							</div>
-
-							<div class="cont-noticias">
-								<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-								<span class="data">30 de Junho, 2019</span>
-							</div>
-						</div>
+							<?php endwhile;
+							wp_reset_query();
+						?>
+						<!-- NOTÍCIAS SECUNDÁRIA -->
 
 						<div class="col-8 list-noticias-mini">
 							<div class="row row-mini item-noticias">
@@ -136,13 +157,13 @@
 				<div class="sidebar">
 					
 					<div class="box-sidebar bg-cinza">
-						<h3 class="center">TORNE-SE UM ASSOCIADO</h3>
+						<h3 class="border center">TORNE-SE UM ASSOCIADO</h3>
 						<p class="center">Ao associar-se, você estará contribuindo para o fortalecimento da nossa classe, além de poder aproveitar os vários benefícios que oferecemos aos nossos sócios.</p>
 						<a href="#" class="button btn-full vermelho margin-top-20">QUERO SER SÓCIO!</a>
 					</div>
 
 					<div class="box-sidebar border">
-						<h3 class=""><span>ATENDIMENTO</span></h3>
+						<h3 class="border mid"><span>ATENDIMENTO</span></h3>
 						<div class="info-contato">
 							<span class="legend-footer">TELEFONE</span>
 							<span class="info-footer"><em>(62)</em> 3218-2914</span>
@@ -170,7 +191,7 @@
 					</div>
 
 					<div class="box-sidebar border">
-						<h3 class=""><span>CATEGORIAS</span></h3>
+						<h3 class="border mid"><span>CATEGORIAS</span></h3>
 						<ul class="categorias">
 							<li><a href="#"><i class="fas fa-chevron-right"></i>Agricultura</a></li>
 							<li><a href="#"><i class="fas fa-chevron-right"></i>Agronegócio</a></li>
@@ -185,7 +206,7 @@
 					</div>
 
 					<div class="box-sidebar bg-cinza margin-top-30">
-						<h3 class="center">NEWSLETTER</h3>
+						<h3 class="border center">NEWSLETTER</h3>
 						<p class="center">Digite seu e-mail abaixo para assinar o nosso informativo e ficar por dentro de todas as novidades!</p>
 						<a href="#" class="button btn-full laranja margin-top-20">ASSINAR</a>
 					</div>
@@ -201,8 +222,6 @@
 </section>
 
 <?php /*
-
-
 
 
 

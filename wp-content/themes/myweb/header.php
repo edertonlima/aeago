@@ -196,8 +196,8 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 						<a href="<?php //echo get_permalink(get_page_by_path('co-found')); ?>" title="EVENTOS">EVENTOS</a>
 					</li>
 
-					<li class="">
-						<a href="<?php //echo get_home_url(); ?>" title="NOTÍCIAS">NOTÍCIAS</a>
+					<li class="submenu">
+						<a href="<?php //echo get_home_url(); ?>" title="NOTÍCIAS">NOTÍCIAS <i class="fas fa-chevron-down"></i></a>
 					</li>
 
 					<li class="">
@@ -225,3 +225,7 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 		</div>
 	</header>
+
+	<?php if(!is_home()){ ?>
+
+	<?php } ?>

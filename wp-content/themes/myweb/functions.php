@@ -60,6 +60,15 @@ function gera_url_encurtada($url){
         return $xml->migre;
     }
 }
+
+
+add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
+function wpdocs_theme_setup() {
+    add_image_size( 'detalhe-post', 1170, 508, true ); // (cropped)
+    add_image_size( 'mini-vertical-post', 320, 568, true ); // (cropped)
+    add_image_size( 'mini-post', 415, 245, true ); // (cropped)
+}
+
  /*
 
 // muda nome post
