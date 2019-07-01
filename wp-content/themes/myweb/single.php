@@ -2,31 +2,6 @@
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<div class="breadcrumbs">
-			<div class="container">
-				<h4>NOTÍCIAS</h4>
-				<ul>
-					<li><a href="<?php echo get_home_url(); ?>" title="HOME"><i class="fas fa-home"></i></a><span></span></li>
-					<li><a href="<?php echo get_home_url(); ?>" title="notícias">notícias</a></li>
-					<li><span class="">
-						<?php 
-							$categorias = wp_get_post_terms( $post->ID, 'category' );
-							foreach ( $categorias as $categoria ) { ?>
-								<a href="#" title=""><?php echo $categoria->name;
-								
-									if( next( $categorias ) ) {
-										echo ', ';
-									} ?>
-
-								</a>
-								
-							<?php }
-						?>	
-					</span></li>
-				</ul>
-			</div>
-		</div>
-
 		<section class="box-content no-padding-bottom noticias det-noticia">
 
 			<?php get_template_part( 'content', get_post_format() ); ?>

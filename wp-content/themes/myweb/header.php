@@ -1,3 +1,5 @@
+<?php include get_template_directory().'/login.php'; //include ('login.php'); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -204,13 +206,18 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 						<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" title="CONTATO">CONTATO</a>
 					</li>
 
-					<li class="">
-						<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="button associar-se" title="ASSOCIAR-SE">ASSOCIAR-SE</a>
-					</li>
+					<?php if ( $_SESSION['associado']['login'] != 'ok' ): ?>
 
-					<li class="">
-						<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="" title="ENTRAR"><i class="fas fa-user-lock"></i>ENTRAR</a>
-					</li>
+						<li class="">
+							<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="button associar-se" title="ASSOCIAR-SE">ASSOCIAR-SE</a>
+						</li>
+
+						<li class="">
+							<a href="javascript:" class="" id="btn-login" title="ENTRAR"><i class="fas fa-user-lock"></i>ENTRAR</a>
+						</li>
+
+					<?php endif; ?>
+
 
 					<li class="redes-sociais">
 						<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="" title="FACEBOOK"><i class="fab fa-facebook-square"></i></a>
@@ -225,6 +232,10 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 		</div>
 	</header>
+
+	<?php get_template_part( 'breadcrumbs', get_post_format() ); ?>
+
+	<?php get_template_part( 'nav-associado', get_post_format() ); ?>
 
 	<?php if(!is_home()){ ?>
 

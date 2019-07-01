@@ -4,6 +4,10 @@
 	.box-sidebar {
 		padding: 30px;
 
+		&:not(.bg-cinza):first-child {
+			padding-top: 0;
+		}
+
 		&.border {
 			//margin-top: 25px;
 			border-bottom: 1px solid #333;
