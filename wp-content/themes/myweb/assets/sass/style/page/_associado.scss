@@ -1,0 +1,49 @@
+.associado {
+
+	.list-associado {
+		height: 400px;
+		padding: 30px;
+		margin-bottom: 30px;
+		@include box-sizing;
+
+		&:before {
+			background-image: url('../images/mask-prof-destaque.png');
+			bottom: -2px;
+			background-size: contain;
+		}
+
+		h2 {
+			font-size: 1.25rem;
+		}
+
+		.label {
+			margin-top: 10px;
+		}
+	}
+
+	&.detalhe {
+		.label {
+			margin: 10px 0;
+		}
+
+		h3 {
+			margin: 20px 0 10px;
+		}
+
+		.info-contato {
+			padding: 20px;
+			display: block;
+
+			li {
+				display: block;
+				padding: 5px;
+				font-weight: $light;
+
+				i {
+					width: 20px;
+					text-align: center;
+				}
+			}
+		}
+	}
+}

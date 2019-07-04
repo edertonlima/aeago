@@ -207,7 +207,7 @@ function create_post_type_associado() {
 	    'hierarchical' => false,
 	    'menu_position' => null,
 	    'menu_icon' => 'dashicons-businessperson',
-	    'supports' => array('title','thumbnail')
+	    'supports' => array('title','thumbnail','excerpt')
 	  );
 
     register_post_type( 'associado', $args );

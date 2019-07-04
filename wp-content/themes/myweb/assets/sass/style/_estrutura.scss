@@ -22,8 +22,8 @@ body * {
 	padding: 0 $padding-container;
 	margin: 0 auto;
 	position: relative;
-	@include box-sizing();
-	@include clear();
+	@include box-sizing;
+	@include clear;
 
 	@media all and (max-width: 1000px){
 		padding-left: ($padding-container)/2;

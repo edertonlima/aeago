@@ -188,6 +188,17 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 					<li class="submenu">
 						<a href="<?php //echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">SOBRE <i class="fas fa-chevron-down"></i></a>
+
+						<ul>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">História</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">Estatuto</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">Missão e Visão</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">Regime Interno</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">Diretoria Executiva</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">Conselho Fiscal</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/" title="">Assessoria Técnica</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/associado" title="ASSOCIADOS">Associados</a></li>
+						</ul>
 					</li>
 
 					<li class="">
@@ -200,6 +211,18 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 					<li class="submenu">
 						<a href="<?php //echo get_home_url(); ?>" title="NOTÍCIAS">NOTÍCIAS <i class="fas fa-chevron-down"></i></a>
+
+						<ul>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Agricultura</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Agronegócio</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Ciência</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Energia</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Florestal</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Gestão Rural</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Mercado</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Política</a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i>Tecnologia</a></li>
+						</ul>
 					</li>
 
 					<li class="">

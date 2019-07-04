@@ -28,17 +28,13 @@
 			</div>
 		</div>
 <?php endif; ?>
+	
+	<?php if (!is_page('sair')) :
 
-	<?php if (!is_page('sair')) : ?>
-		<div class="box-sidebar box-destaque profissional-destaque" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/profissional-destaque.jpg');">
+		// PROFISSIONAL EM DESTAQUE
+		get_template_part( 'content-associado-destaque', get_post_format() );
 
-			<div class="box-content-destaque center">
-				<h2>Pedro Augusto</h2>
-				<span class="subtitulo-box">Engenheiro</span>
-				<span class="label azul">profissional em destaque</span>
-			</div>
-		</div>
-	<?php endif; ?>
+	endif; ?>
 
 	<div class="box-sidebar border">
 		<h3 class="border mid"><span>CATEGORIAS</span></h3>

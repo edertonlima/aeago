@@ -296,6 +296,15 @@ a {
 	font-weight: $regular;
 	letter-spacing: 1px;
 
+	&.grande {
+		//height: 46px;
+		//line-height: 46px;
+		//color: #ffffff;
+		//font-weight: $bold;
+		font-size: .75rem;
+		padding: 10px 20px;
+	}
+
 	&.nome-area {
 		position: relative;
 		right: 0;

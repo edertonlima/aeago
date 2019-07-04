@@ -28,22 +28,27 @@
 			)
 		);
 
-		$associado = new WP_Query( $args_login );
+		//$associado = new WP_Query( $args_login );
 
-		if( $associado->have_posts() ):
+		if( query_posts( $args_login ) ):
 
 			session_cache_limiter('private');
 			session_cache_expire(30);
 
 			session_start();
 
-			$_SESSION['associado']['id'] = $post->ID;
-			$_SESSION['associado']['nome-completo'] = $post->post_title;
-			$_SESSION['associado']['nome'] = get_field('nome_associado');
-			$_SESSION['associado']['sobrenome'] = get_field('sobrenome_associado');
-			$_SESSION['associado']['email'] = $email;
-			$_SESSION['associado']['status'] = get_field('status_associado');
-			$_SESSION['associado']['login'] = 'ok';
+			while ( have_posts() ) : the_post(); 
+
+				$_SESSION['associado']['id'] = $post->ID;
+				$_SESSION['associado']['nome-completo'] = $post->post_title;
+				$_SESSION['associado']['nome'] = get_field('nome_associado');
+				$_SESSION['associado']['sobrenome'] = get_field('sobrenome_associado');
+				$_SESSION['associado']['email'] = $email;
+				$_SESSION['associado']['status'] = get_field('status_associado');
+				$_SESSION['associado']['login'] = 'ok';
+
+			endwhile;
+			wp_reset_query();
 
 			//echo 'SESSÃO ATIVA PÓS LOGIN <br>';
 
@@ -76,7 +81,7 @@
 
 		else :
 
-			if ( (isset($_SESSION)) && (!empty($_SESSION['associado']['id'])) ):
+			if ( (isset($_SESSION)) && (!empty($_SESSION['associado'])) ):
 
 				$_SESSION['associado']['login'] = 'ok';
 				//echo 'SESSÃO ATIVA <br>';
