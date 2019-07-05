@@ -1,48 +1,97 @@
+<div class="row row-mini">
+	<div class="">
 		
-		<div class="row row-mini">
-			<div class="cont-noticias">
+		<div class="col-12">
 
-				<div class="col-4">
-					<?php 
-						$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'mini-post' ); 
-						if($imagem[0]){ ?>
-							<img src="<?php echo $imagem[0]; ?>">
-						<?php }
-					?>
+			<?php 
+				$categorias = wp_get_post_terms( $post->ID, 'categoria_forum' );
+				foreach ( $categorias as $categoria ) { ?>
+					<span class="label azul"><?php echo $categoria->name; ?></span>
+				<?php }
+			?>	
 
-					<div class="info-contato">
-						<ul>
-							<li><i class="fas fa-at"></i> <?php the_field('email_associado'); ?></li>
-							<li><i class="fas fa-phone-alt"></i> (62) 3213-5148</li>
-							<li><i class="fas fa-mobile-alt"></i> (62) 9973-5831</li>
-							<li><i class="fas fa-map-marker-alt"></i> Goiana, PE</li>
-						</ul>
-					</div>
-				</div>
+			<h2><?php the_title(); ?></h2>
+			<span class="autor">
+				<strong><?php echo get_the_title(get_field('autor-forum')); ?></strong>
+				<span> - <?php echo get_the_date(); ?> <?php the_time( 'à\s H:i' ); ?></span>
+			</span>
 
-				<div class="col-8">
-					<span class="label azul">Engenheiro</span>
-					<h2><?php the_title(); ?></h2>
-					<p>Número de Carteira: 1137/D-GO</p>
-					
-					<?php the_excerpt(); ?>
 
-					<div class="perfil">
-						<h3 class="border mid">
-							<span>Perfil</span>
-						</h3>
-						<p>a) Avaliações e Perícias de Engenharia</p>
-						<p>b) Vistoria Cautelar de: Vizinhos, Aptos. Novos;</p>
-						<p>c) Vistoria p/Condôminos a Receber Prédios Novos das Construtoras</p>
-						<p>d) Inspeção Predial, Vistoria em Obras p/Verificação de Defeitos, Planejamento e Acompanhamento de Obras</p></p>
-					</div>
-				</div>
-
+			<div class="content justify">
+				<?php the_content(); ?>
 			</div>
+
+			<div class="tags">
+				<h3><span>TAGS:</span></h3>
+				<ul>
+					<li><a href="#" class="label">agro</a></li>
+					<li><a href="#" class="label">tecnologia</a></li>
+					<li><a href="#" class="label">sustentabilidade</a></li>
+					<li><a href="#" class="label">pib</a></li>
+					<li><a href="#" class="label">futuro</a></li>
+				</ul>
+			</div>
+
+			<ul class="list-post-forum">
+
+				<li class="item-forum form-forum bg-azul">
+					<div class="header-post">
+						<strong>Comente nesta publicação</strong>
+					</div>
+					<div class="body-post">
+						<form>
+							<fieldset>
+								<textarea placeholder="Seu texto..."></textarea>
+							</fieldset>
+						</form>
+					</div>
+					<div class="footer-post">
+						<button class="button mini azul">ENVIAR</button>
+					</div>
+				</li>
+
+				<li class="item-forum bg-cinza">
+					<div class="header-post">
+						<i class="fas fa-user"></i><strong>Luciana Oliver Albino</strong>29 de junho, 2019 3:22 pm
+						<?php /*<div class="favorito"><i class="fas fa-heart"></i> 10</div>*/ ?>
+					</div>
+					<div class="body-post">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					<div class="footer-post">
+						<?php /*<button class="button mini azul transparent">CURTIR</button> */?>
+						<button class="button mini azul">RESPONDER</button>
+					</div>
+				</li>
+
+				<li class="item-forum bg-cinza">
+					<div class="header-post">
+						<i class="fas fa-user"></i><strong>Suelen Zuriana Silva</strong>29 de junho, 2019 3:22 pm
+					</div>
+					<div class="body-post">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					<div class="footer-post">
+						<button class="button mini azul">RESPONDER</button>
+					</div>
+				</li>
+
+				<li class="item-forum bg-cinza">
+					<div class="header-post">
+						<i class="fas fa-user"></i><strong>Túlio Marcelo da Silva Lima</strong>29 de junho, 2019 3:22 pm
+					</div>
+					<div class="body-post">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					<div class="footer-post">
+						<button class="button mini azul">RESPONDER</button>
+					</div>
+				</li>
+			</ul>
 		</div>
 
-
-
+	</div>
+</div>
 <?php /*
 
 <?php $category = get_categories($args);  ?>

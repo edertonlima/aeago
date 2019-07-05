@@ -22,7 +22,7 @@ form {
 	}
 
 	input[type='text'], input[type='email'], input[type='password'] {
-		background-color: transparent;
+		background-color: #ffffff;
 		font-size: 1rem; 
 		color: $cor-txt;
 		font-weight: $light;
@@ -35,7 +35,7 @@ form {
 	}
 
 	textarea {
-		background-color: transparent;
+		background-color: #ffffff;
 		padding: 20px 10px;
 		font-size: 1.25rem; 
 		color: $cor-txt;
@@ -47,7 +47,7 @@ form {
 	}
 
 	fieldset {
-		margin-top: 20px;
+		margin-top: 30px;
 		width: 100%;
 		float: left;
 		clear: both;
@@ -156,6 +156,14 @@ button, input[type='submit'], .button {
 		text-transform: none;
 	}
 
+	&.mini {
+		height: 29px;
+		line-height: 29px;
+		font-size: .65rem;
+		padding: 0 20px;
+		text-transform: none;
+	}
+
 	&.associar-se {
 		&:hover {
 			background-color: $azul;
@@ -173,26 +181,6 @@ button, input[type='submit'], .button {
 		margin-left: auto;
 		width: 220px;
 		display: block;
-	}
-
-	&.vermelho {
-		background-color: $vermelho;
-		color: #ffffff;
-		border-color: $vermelho;
-
-		&:hover {
-			background-color: darken($vermelho, 10%);
-		}
-	}
-
-	&.laranja {
-		background-color: $laranja;
-		color: #ffffff;
-		border-color: $laranja;
-
-		&:hover {
-			background-color: darken($laranja, 10%);
-		}
 	}
 
 	&.azul-celeste {
