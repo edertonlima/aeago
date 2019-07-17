@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="box-content">
+<section class="box-content padding-top-40">
 	<div class="container">
 		
 		<div class="row">

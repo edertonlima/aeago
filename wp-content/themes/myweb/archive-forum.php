@@ -1,61 +1,94 @@
 <?php get_header(); ?>
 
-<?php //var_dump($_SESSION['associado']); ?>
-<section class="box-content forum list-forum">
+<section class="box-content padding-top-40 forum list-forum">
 	<div class="container">
 		
 		<div class="row">
 			<div class="col-9">
 
-				<ul class="list-bloco-post list-meus-post">
-					<li class="item-forum titulo-list bg-azul bg-total">
-						<div class="header-post">
-							
-							<div class="table-forum">
-								<div class="collist-forum colNome branco">Minhas Publicações</div>
-								<div class="collist-forum colNum branco">Interações</div>	
-								<div class="collist-forum colUltPost branco">Último Post</div>
+				<?php if( $_GET['post'] == 'novo' ) : ?>
+
+					<h3>NOVO POST</h3>
+					<ul class="list-post-forum">
+
+						<li class="item-forum form-forum bg-cinza">
+							<div class="header-post">
 							</div>
-
-						</div>
-					</li>
-
-					<?php while ( have_posts() ) : the_post();
-
-						//echo get_field('autor-forum') .' == '. $_SESSION['associado']['id'];
-						if(get_field('autor-forum') == $_SESSION['associado']['id']){
-							get_template_part( 'content-list-forum', get_post_format() );
-						}
-
-					endwhile; ?>
-				</ul>
-
-				<div class="novo-post">
-					<button class="button mini azul">NOVO POST</button>
-				</div>
-
-				<ul class="list-bloco-post list-todos-post margin-top-60">
-					<li class="item-forum titulo-list bg-laranja bg-total">
-						<div class="header-post">
-							
-							<div class="table-forum">
-								<div class="collist-forum colNome branco">Todas as Publicações</div>
-								<div class="collist-forum colNum branco">Interações</div>	
-								<div class="collist-forum colUltPost branco">Último Post</div>
+							<div class="body-post">
+								<form>
+									<fieldset>
+										<input type="text" name="" placeholder="Título">
+									</fieldset>
+									<fieldset>
+										<textarea class="mini" placeholder="Resumo"></textarea>
+									</fieldset>
+									<fieldset>
+										<textarea placeholder="Seu texto..."></textarea>
+									</fieldset>
+								</form>
 							</div>
+							<div class="footer-post">
+								<button class="button mini azul">ENVIAR</button>
+							</div>
+						</li>
 
-						</div>
-					</li>
+					</ul>
 
-					<?php while ( have_posts() ) : the_post();
+				<?php else: ?>
 
-						//echo get_field('autor-forum') .' == '. $_SESSION['associado']['id'];
-						//if(get_field('autor-forum') == $_SESSION['associado']['id']){
-							get_template_part( 'content-list-forum', get_post_format() );
-						//}
+					<ul class="list-bloco-post list-meus-post">
+						<li class="item-forum titulo-list bg-azul bg-total">
+							<div class="header-post">
+								
+								<div class="table-forum">
+									<div class="collist-forum colNome branco">Minhas Publicações</div>
+									<div class="collist-forum colNum branco">Interações</div>	
+									<div class="collist-forum colUltPost branco">Último Post</div>
+								</div>
 
-					endwhile; ?>
-				</ul>				
+							</div>
+						</li>
+
+						<?php while ( have_posts() ) : the_post();
+
+							//echo get_field('autor-forum') .' == '. $_SESSION['associado']['id'];
+							if(get_field('autor-forum') == $_SESSION['associado']['id']){
+								get_template_part( 'content-list-forum', get_post_format() );
+							}
+
+						endwhile; ?>
+					</ul>
+
+					<div class="novo-post">
+						<a href="<?php echo get_home_url(); ?>/forum/?post=novo" class="button mini azul">NOVO POST</a>
+					</div>
+
+					<ul class="list-bloco-post list-todos-post margin-top-60">
+						<li class="item-forum titulo-list bg-laranja bg-total">
+							<div class="header-post">
+								
+								<div class="table-forum">
+									<div class="collist-forum colNome branco">Publicações </div>
+									<div class="collist-forum colNum branco">Interações</div>	
+									<div class="collist-forum colUltPost branco">Último Post</div>
+								</div>
+
+							</div>
+						</li>
+
+						<?php while ( have_posts() ) : the_post();
+
+							//echo get_field('autor-forum') .' == '. $_SESSION['associado']['id'];
+							//if(get_field('autor-forum') == $_SESSION['associado']['id']){
+							if(get_field('autor-forum') != $_SESSION['associado']['id']){
+								get_template_part( 'content-list-forum', get_post_format() );
+							}
+							//}
+
+						endwhile; ?>
+					</ul>	
+
+				<?php endif; ?>
 
 			</div>
 

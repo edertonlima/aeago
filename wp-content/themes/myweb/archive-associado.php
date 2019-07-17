@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php //var_dump($_SESSION['associado']); ?>
-<section class="box-content associado">
+<section class="box-content padding-top-40 associado">
 	<div class="container">
 		
 		<div class="row">

@@ -31,6 +31,7 @@
 
 		&:hover {
 			background-color: darken($amarelo, 10%);
+			border-color: darken($amarelo, 10%);
 		}
 	}
 
@@ -41,6 +42,7 @@
 
 		&:hover {
 			background-color: darken($vermelho, 10%);
+			border-color: darken($vermelho, 10%);
 		}
 	}
 
@@ -51,6 +53,7 @@
 
 		&:hover {
 			background-color: darken($laranja, 10%);
+			border-color: darken($laranja, 10%);
 		}
 	}
 
@@ -61,6 +64,7 @@
 
 		&:hover {
 			background-color: darken($azul, 10%);
+			border-color: darken($azul, 10%);
 		}
 
 		&.transparent {
@@ -70,6 +74,27 @@
 			&:hover {
 				background-color: $azul;
 				color: #ffffff;
+			}
+		}
+	}
+
+	&.cinza {
+		background-color: $cinza;
+		color: darken($cinza, 30%);
+		border-color: $cinza;
+
+		&:hover {
+			background-color: darken($cinza, 10%);
+			border-color: darken($cinza, 10%);
+		}
+
+		&.transparent {
+			color: darken($cinza, 20%);
+			background: transparent;
+
+			&:hover {
+				background-color: $cinza;
+				color: darken($cinza, 30%);
 			}
 		}
 	}

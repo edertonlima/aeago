@@ -1,99 +1,85 @@
-<div class="row row-mini">
-	<div class="">
 		
-		<div class="col-12">
+		
+			<div class="cont-noticias login-on">
 
-			<?php 
-				$categorias = wp_get_post_terms( $post->ID, 'categoria_forum' );
-				foreach ( $categorias as $categoria ) { ?>
-					<span class="label azul"><?php echo $categoria->name; ?></span>
-				<?php }
-			?>	
+				<div class="cont-login-on image">
+					<?php 
+						$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'mini-post' ); 
+						if($imagem[0]){ ?>
+							<img src="<?php echo $imagem[0]; ?>">
+						<?php }
+					?>
+				</div>
 
-			<h2><?php the_title(); ?></h2>
-			<span class="autor">
-				<strong><?php echo get_the_title(get_field('autor-forum')); ?></strong>
-				<span> - <?php echo get_the_date(); ?> <?php the_time( 'à\s H:i' ); ?></span>
-			</span>
+				<div class="cont-login-on">
+					<span class="label azul">Engenheiro</span>
+					<h2><?php the_title(); ?></h2>
+					<p>Número de Carteira: <?php the_field('num_carteira_associado'); ?></p>
+				</div>
 
+				<div class="cont-login-on">
+					<a href="<?php echo get_permalink($_SESSION['associado']['id']); ?>?editar=senha" class="button mini cinza transparent">ALTERAR SENHA</a>
+					<a href="<?php echo get_permalink($_SESSION['associado']['id']); ?>?editar=perfil" class="button mini laranja">EDITAR</a>
+				</div>
 
-			<div class="content justify">
-				<?php the_content(); ?>
 			</div>
+		
 
-			<?php /*
-			<div class="tags">
-				<h3><span>TAGS:</span></h3>
-				<ul>
-					<li><a href="#" class="label">agro</a></li>
-					<li><a href="#" class="label">tecnologia</a></li>
-					<li><a href="#" class="label">sustentabilidade</a></li>
-					<li><a href="#" class="label">pib</a></li>
-					<li><a href="#" class="label">futuro</a></li>
-				</ul>
-			</div>
-			*/ ?>
+		<?php if( ($_GET['editar'] == 'perfil') and ( $_SESSION['associado']['id'] == $post->ID )) : ?>
+			<section class="box-content box-form-bg bg-cinza margin-top-30">
 
-			<ul class="list-post-forum">
+				<h3>EDITAR PERFIL</h3>
+				
+				<form id="" action="<?php echo get_permalink($_SESSION['associado']['id']); ?>" method="post">
+					<fieldset class="col2">
+						<input type="text" name="nome" id="sobrenome" placeholder="Seu Nome" value="<?php the_field('nome_associado'); ?>">
+					</fieldset>
+					<fieldset class="col2 right">
+						<input type="text" name="sobrenome" id="sobrenome" placeholder="Seu Sobrenome" value="<?php the_field('sobrenome_associado'); ?>">
+					</fieldset>
 
-				<li class="item-forum form-forum bg-azul">
-					<div class="header-post">
-						<strong>Comente nesta publicação</strong>
-					</div>
-					<div class="body-post">
-						<form>
-							<fieldset>
-								<textarea placeholder="Seu texto..."></textarea>
+					<fieldset class="col2">
+						<input type="text" name="email" id="email" placeholder="Seu E-mail" value="<?php the_field('email_associado'); ?>">
+					</fieldset>
+					<fieldset class="col2 right">
+						<input type="text" name="num_carteira" id="num_carteira" placeholder="Número de Carteira" value="<?php the_field('num_carteira_associado'); ?>">
+					</fieldset>
+
+					<fieldset class="">
+						<textarea placeholder="Sobre Você"><?php echo get_the_excerpt(); ?></textarea>
+					</fieldset>
+
+					<fieldset class="">
+						<button class="button grande vermelho" type="submit">SALVAR</button>
+					</fieldset>
+				</form>
+
+			</section>
+		<?php endif;
+
+		if( ($_GET['editar'] == 'senha') and ( $_SESSION['associado']['id'] == $post->ID )) : ?>
+			<section class="box-content box-form-bg bg-cinza margin-top-30">
+
+						<h3>ALTERAR SENHA</h3>
+						
+						<form id="" action="<?php echo get_permalink($_SESSION['associado']['id']); ?>" method="post">
+							<fieldset class="col2">
+								<input type="text" name="nome" id="sobrenome" placeholder="Nova Senha" value="">
+							</fieldset>
+							<fieldset class="col2 right">
+								<input type="text" name="sobrenome" id="sobrenome" placeholder="Confirme sua Nova Senha" value="">
+							</fieldset>
+
+							<fieldset class="">
+								<button class="button grande vermelho" type="submit">SALVAR</button>
 							</fieldset>
 						</form>
-					</div>
-					<div class="footer-post">
-						<button class="button mini azul">ENVIAR</button>
-					</div>
-				</li>
 
-				<li class="item-forum bg-cinza">
-					<div class="header-post">
-						<i class="fas fa-user"></i><strong>Luciana Oliver Albino</strong>29 de junho, 2019 3:22 pm
-						<?php /*<div class="favorito"><i class="fas fa-heart"></i> 10</div>*/ ?>
-					</div>
-					<div class="body-post">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<div class="footer-post">
-						<?php /*<button class="button mini azul transparent">CURTIR</button> */?>
-						<button class="button mini azul">RESPONDER</button>
-					</div>
-				</li>
+			</section>
+		<?php endif; ?>
 
-				<li class="item-forum bg-cinza">
-					<div class="header-post">
-						<i class="fas fa-user"></i><strong>Suelen Zuriana Silva</strong>29 de junho, 2019 3:22 pm
-					</div>
-					<div class="body-post">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<div class="footer-post">
-						<button class="button mini azul">RESPONDER</button>
-					</div>
-				</li>
 
-				<li class="item-forum bg-cinza">
-					<div class="header-post">
-						<i class="fas fa-user"></i><strong>Túlio Marcelo da Silva Lima</strong>29 de junho, 2019 3:22 pm
-					</div>
-					<div class="body-post">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<div class="footer-post">
-						<button class="button mini azul">RESPONDER</button>
-					</div>
-				</li>
-			</ul>
-		</div>
 
-	</div>
-</div>
 <?php /*
 
 <?php $category = get_categories($args);  ?>

@@ -2,13 +2,19 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<section class="box-content no-padding-bottom associado detalhe">
+	<section class="box-content padding-top-40 no-padding-bottom associado detalhe">
 		<div class="container">
 			
 			<div class="row">
 				<div class="col-9">
 
-					<?php get_template_part( 'content-associado', get_post_format() ); ?>
+					<?php
+						if( $_SESSION['associado']['id'] == $post->ID ):
+							get_template_part( 'content-associado-on', get_post_format() );
+						else:
+							get_template_part( 'content-associado', get_post_format() );
+						endif;
+					?>
 
 				</div>
 

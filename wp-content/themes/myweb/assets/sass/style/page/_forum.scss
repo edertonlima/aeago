@@ -110,6 +110,10 @@
 					font-weight: $light;
 					padding: 10px;
 					min-height: 200px;
+
+					&.mini {
+						min-height: 50px;
+					}
 				}
 			}
 		}
@@ -275,7 +279,7 @@
 		width: 100%;
 		text-align: right;
 
-		button {
+		.button {
 			margin: 10px;
 		}
 	}

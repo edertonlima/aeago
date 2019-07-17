@@ -47,6 +47,8 @@
 				$_SESSION['associado']['status'] = get_field('status_associado');
 				$_SESSION['associado']['login'] = 'ok';
 
+				header("Location: " . get_permalink($id_associado));
+
 			endwhile;
 			wp_reset_query();
 

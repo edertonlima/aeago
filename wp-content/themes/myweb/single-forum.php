@@ -2,7 +2,7 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<section class="box-content no-padding-bottom forum detalhe">
+	<section class="box-content padding-top-40 no-padding-bottom forum detalhe">
 		<div class="container">
 			
 			<div class="row">

@@ -36,11 +36,12 @@ form {
 
 	textarea {
 		background-color: #ffffff;
-		padding: 20px 10px;
-		font-size: 1.25rem; 
+		font-size: 1rem; 
 		color: $cor-txt;
 		font-weight: $light;
-		border: 1px solid $cinza;
+		border-bottom: 1px solid $cor-txt;
+		padding: 10px;
+		font-style: normal;
 		height: 95px;
 		resize: vertical;
 		@include box-sizing;
@@ -277,5 +278,14 @@ input::-webkit-input-placeholder {
 
 	&.ok {
 		color: $verde;
+	}
+}
+
+
+.box-form-bg {
+	padding: 40px;
+
+	h3 {
+		margin-top: 0!important;
 	}
 }

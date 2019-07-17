@@ -128,3 +128,95 @@
 		opacity: .5;
 	}
 }
+
+/* NAV ASSOCIADO */
+.nav-associado {
+	width: 100%;
+	padding: 0;
+	border-bottom: 1px solid #f2f2f2;
+
+	ul {
+		float: right;
+		text-align: right;
+		padding-right: 40px;
+
+		li {
+			display: inline-block;
+			border-bottom: 1px solid #f2f2f2;
+			position: relative;
+			top: 1px;
+
+			/*&:after {
+				content: "\f111";
+				font-size: .3rem;
+				line-height: 1.37rem;
+				font-family: 'Font Awesome 5 Free';
+				font-weight: 900;
+				display: inline;
+				padding: 0 7px 0px 10px;
+				opacity: .7;
+				position: relative;
+				top: -3px
+			}
+
+			*/
+			&:first-child {
+				padding-left: 0;
+				padding-right: 20px;
+
+				span {
+					color: $azul-celeste;
+				}
+			}
+
+			&:last-child {
+				padding-left: 20px;
+				padding-right: 0;
+			}
+
+			&.nav-link {
+				&:hover, &.ativo {
+					border-bottom-color: $laranja;
+
+					a {
+						color: $laranja;
+
+						i {
+							color: $laranja;
+						}
+					}
+				}
+			}
+		}
+
+		a, span, i {
+			line-height: 1.37rem;
+			display: inline;
+		}
+
+		a, span {
+			font-weight: $regular;
+			font-size: .8rem;
+			text-transform: uppercase;
+			padding: 8px 10px;
+			display: inline-block;
+		}
+
+		i {
+			font-size: .9rem;
+			opacity: .7;
+		}
+
+		a {
+			@include animacao;
+
+			&:hover {
+				color: $laranja;
+
+				i {
+					color: $laranja;
+				}
+			}
+		}
+	}
+}
