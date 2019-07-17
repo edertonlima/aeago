@@ -1,3 +1,32 @@
+<?php
+	if( $_POST['post'] == 'publicado' ):
+		if($_POST['forum_titulo'] != ''):
+
+			$new_post = array(
+				'post_title'	=> $_POST['forum_titulo'],
+				'post_content'  => $_POST['forum_texto'],
+				'post_excerpt'  => $_POST['forum_resumo'],
+				'post_type'		=> 'forum',
+				'post_status'	=> 'publish'
+			);
+
+			// insert the post into the database
+			if($id_newPost = wp_insert_post( $new_post )):
+
+				session_start();
+				$autor = get_post( $_SESSION['associado']['id'] );
+				//echo '<br><br>'.$_SESSION['associado']['id'];
+				//var_dump($autor);
+				update_field( 'autor-forum', $autor, $id_newPost );
+				wp_set_post_terms( $id_newPost, $_POST['forum_categoria'], 'categoria_forum' );
+
+				header("Location: " . get_permalink($id_newPost));
+			endif;
+
+		endif;
+	endif;
+?>
+
 <?php get_header(); ?>
 
 <section class="box-content padding-top-40 forum list-forum">
@@ -14,21 +43,45 @@
 						<li class="item-forum form-forum bg-cinza">
 							<div class="header-post">
 							</div>
-							<div class="body-post">
-								<form>
+							<div class="body-post form-novo-post">
+								<form action="<?php echo get_home_url(); ?>/forum" method="post">
 									<fieldset>
-										<input type="text" name="" placeholder="Título">
+										<input type="text" name="forum_titulo" placeholder="Título">
 									</fieldset>
 									<fieldset>
-										<textarea class="mini" placeholder="Resumo"></textarea>
+										<textarea name="forum_resumo" class="mini" placeholder="Resumo"></textarea>
+									</fieldset>
+									<fieldset class="col2">
+										<?php
+										$terms = get_terms( array(
+										    'taxonomy' => 'categoria_forum',
+										    'hide_empty' => false,
+										) );
+										//var_dump($terms);
+										?>
+
+										<div class="select">
+										<select name="forum_categoria">
+											<option>Categoria</option>
+											<?php
+												foreach ($terms as $key => $term) { ?>
+													<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+												<?php }
+											?>
+										</select>
+										</div>
 									</fieldset>
 									<fieldset>
-										<textarea placeholder="Seu texto..."></textarea>
+										<textarea name="forum_texto" placeholder="Seu texto..."></textarea>
+									</fieldset>
+									<fieldset>
+										<input type="hidden" name="post" value="publicado">
+										<button type="submit" class="button grande vermelho">PUBLICAR</button>
 									</fieldset>
 								</form>
 							</div>
 							<div class="footer-post">
-								<button class="button mini azul">ENVIAR</button>
+
 							</div>
 						</li>
 

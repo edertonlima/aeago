@@ -3,7 +3,7 @@
 		
 		<div class="col-12">
 
-			<?php 
+			<?php //ar_dump($post);
 				$categorias = wp_get_post_terms( $post->ID, 'categoria_forum' );
 				foreach ( $categorias as $categoria ) { ?>
 					<span class="label azul"><?php echo $categoria->name; ?></span>
