@@ -1,3 +1,47 @@
+<?php
+	if( $_POST['comentario'] == 'novo' ):
+		if($_POST['comentario_forum'] != ''):
+
+			/*$new_post = array(
+				'post_title'	=> $_POST['forum_titulo'],
+				'post_content'  => $_POST['forum_texto'],
+				'post_excerpt'  => $_POST['forum_resumo'],
+				'post_type'		=> 'forum',
+				'post_status'	=> 'publish'
+			);*/
+
+			session_start();
+			$autor = get_post( $_SESSION['associado']['id'] );
+			$texto = $_POST['comentario_forum'];
+			$resposta_post = $_POST['resposta-post'];
+			//echo '<br><br>'.$_SESSION['associado']['id'];
+			//var_dump($autor);
+			//update_field( 'autor-post', $autor, $id_newPost );
+			//update_field( 'texto-post', $_POST['comentario_forum'], $id_newPost );
+
+			//wp_set_post_terms( $id_newPost, $_POST['forum_categoria'], 'categoria_forum' );
+
+			date_default_timezone_set('America/Sao_Paulo');
+			setlocale(LC_TIME,"portuguese");
+
+			$posts_forum = "posts-forum";
+			$value = array(
+				"autor-post"	=> $autor,
+				"texto-post"	=> $texto,
+				"data-post"		=> strftime("%d de %B, %Y às %R"),
+				"resposta-post"		=> $resposta_post
+			);
+
+			//update_field( $posts_forum, $value, $post->ID );
+			//update_sub_field( $posts_forum, $value, $post->ID );
+			add_row( $posts_forum, $value, $post->ID );
+
+			header("Location: " . get_permalink());
+
+		endif;
+	endif;
+?>
+
 <?php get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>

@@ -21,12 +21,38 @@
 				</div>	
 
 			</div>
-			<div class="collist-forum colNum">9</div>	
+			<div class="collist-forum colNum">
+				<?php 
+					if( have_rows('posts-forum') ):
+						echo count(get_field('posts-forum'));
+					else:
+						echo '0';
+					endif;
+				?>
+			</div>	
 			<div class="collist-forum colUltPost">
 				<span class="autor">
-					<strong>Suelen</strong>
-					<span><?php echo get_the_date(); ?></span>
-					<span><?php the_time( 'à\s H:i' ); ?></span>
+					<?php
+						if( have_rows('posts-forum') ):
+
+							$repeater = get_field('posts-forum');
+							$last_row = end($repeater);
+
+							$ID = $last_row['autor-post'][0];
+							$args = array('p' => $ID, 'post_type' => 'associado');
+							$loop = new WP_Query($args);
+
+							while ( $loop->have_posts() ) : $loop->the_post(); ?>
+								<strong><?php the_field('nome_associado'); ?></strong>
+							<?php endwhile;
+
+							$data_last_post = explode('às', $last_row['data-post']); ?>
+
+							<span><?php echo $data_last_post[0]; ?></span>
+							<span><?php echo 'às' . $data_last_post[1]; ?></span>
+
+						<?php endif;
+					?>
 				</span>
 			</div>
 		</div>

@@ -63,6 +63,9 @@
 			unset( $_SESSION );
 			
 			$_SESSION['associado']['login'] = 'erro';
+			if(get_post_type() == 'forum'):
+				header("Location: " . get_home_url());
+			endif;
 
 		endif;
 
@@ -80,6 +83,9 @@
 			unset( $_SESSION );
 
 			$_SESSION['associado']['login'] = 'finalizado';
+			if(get_post_type() == 'forum'):
+				header("Location: " . get_home_url());
+			endif;
 
 		else :
 
@@ -104,6 +110,9 @@
 				unset( $_SESSION );
 
 				$_SESSION['associado']['login'] = 'finalizado';
+				if(get_post_type() == 'forum'):
+					header("Location: " . get_home_url());
+				endif;
 
 			endif;
 

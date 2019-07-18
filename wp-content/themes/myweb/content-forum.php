@@ -3,7 +3,9 @@
 		
 		<div class="col-12">
 
-			<?php //ar_dump($post);
+			<?php 
+				$url_post = get_permalink();
+				$ID_post = $post->ID;
 				$categorias = wp_get_post_terms( $post->ID, 'categoria_forum' );
 				foreach ( $categorias as $categoria ) { ?>
 					<span class="label azul"><?php echo $categoria->name; ?></span>
@@ -37,224 +39,116 @@
 			<ul class="list-post-forum">
 
 				<li class="item-forum form-forum bg-azul">
-					<div class="header-post">
-						<strong>Comente nesta publicação</strong>
-					</div>
-					<div class="body-post">
-						<form>
+
+					<form action="<?php echo $url_post; ?>" method="post">
+						<div class="header-post">
+							<strong>Comente nesta publicação</strong>
+						</div>
+						<div class="body-post">							
 							<fieldset>
-								<textarea placeholder="Seu texto..."></textarea>
+								<textarea name="comentario_forum" placeholder="Seu texto..."></textarea>
 							</fieldset>
-						</form>
-					</div>
-					<div class="footer-post">
-						<button class="button mini azul">ENVIAR</button>
-					</div>
+						</div>
+						<div class="footer-post">
+							<input type="hidden" name="resposta-post" value="">
+							<input type="hidden" name="comentario" value="novo">
+							<button type="submit" class="button mini azul">ENVIAR</button>
+						</div>
+					</form>
+
 				</li>
 
-				<li class="item-forum bg-cinza">
-					<div class="header-post">
-						<i class="fas fa-user"></i><strong>Luciana Oliver Albino</strong>29 de junho, 2019 3:22 pm
-						<?php /*<div class="favorito"><i class="fas fa-heart"></i> 10</div>*/ ?>
-					</div>
-					<div class="body-post">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<div class="footer-post">
-						<?php /*<button class="button mini azul transparent">CURTIR</button> */?>
-						<button class="button mini azul">RESPONDER</button>
-					</div>
-				</li>
+				<?php if( have_rows('posts-forum') ):
+					$row_comentario = 0;
+					while ( have_rows('posts-forum') ) : the_row(); 
 
-				<li class="item-forum bg-cinza">
-					<div class="header-post">
-						<i class="fas fa-user"></i><strong>Suelen Zuriana Silva</strong>29 de junho, 2019 3:22 pm
-					</div>
-					<div class="body-post">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<div class="footer-post">
-						<button class="button mini azul">RESPONDER</button>
-					</div>
-				</li>
+						$myarray = array(get_sub_field('autor-post')[0]);
+						$args = array(
+						   'post_type' => 'associado',
+						   'post__in'  => $myarray
+						);
 
-				<li class="item-forum bg-cinza">
-					<div class="header-post">
-						<i class="fas fa-user"></i><strong>Túlio Marcelo da Silva Lima</strong>29 de junho, 2019 3:22 pm
-					</div>
-					<div class="body-post">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<div class="footer-post">
-						<button class="button mini azul">RESPONDER</button>
-					</div>
-				</li>
+						if( query_posts( $args ) ):
+							while ( have_posts() ) : the_post(); ?>
+
+								<li class="item-forum bg-cinza" id="post-<?php echo $row_comentario; ?>">
+									<div class="header-post">
+										<i class="fas fa-user"></i>
+										<strong><?php echo $post->post_title; ?></strong>
+										<!--29 de junho, 2019 3:22 pm-->
+										<?php the_sub_field('data-post'); ?>
+										<?php /*<div class="favorito"><i class="fas fa-heart"></i> 10</div>*/ ?>
+									</div>
+									<div class="body-post">
+
+										<?php if(get_sub_field('resposta-post') != ''): ?>
+											<div class="reposta-post">
+												<i class="fas fa-quote-left"></i>
+
+												<?php
+													$rows = get_field('posts-forum',$ID_post); // get all the rows
+													$specific_row = $rows[get_sub_field('resposta-post')]; // 0 will get the first row, remember that the count starts at 0
+													echo '<p>' . $specific_row['texto-post'] . '</p>';
+												?>
+
+											</div>
+										<?php endif; ?>
+
+										<p><?php the_sub_field('texto-post'); ?></p>
+									</div>
+									<div class="footer-post">
+										<?php /*<button class="button mini azul transparent">CURTIR</button> */?>
+										<button class="button mini azul responder" rel='#resposta-<?php echo $row_comentario; ?>'>RESPONDER</button>
+									</div>
+								</li>
+
+								<li class="item-forum form-forum bg-azul item-resposta" id="resposta-<?php echo $row_comentario; ?>">
+
+									<i class="fas fa-times close-responder"></i>
+									<form action="<?php echo $url_post; ?>" method="post">
+										<div class="header-post">
+											<strong>Comente nesta resposta</strong>
+										</div>
+										<div class="body-post">							
+											<fieldset>
+												<textarea name="comentario_forum" placeholder="Seu texto..."></textarea>
+											</fieldset>
+										</div>
+										<div class="footer-post">
+											<input type="hidden" name="resposta-post" value="<?php echo $row_comentario; ?>">
+											<input type="hidden" name="comentario" value="novo">
+											<button type="submit" class="button mini azul">ENVIAR</button>
+										</div>
+									</form>
+
+								</li>
+
+							<?php endwhile;
+							wp_reset_query();
+						endif;
+
+						$row_comentario++; 
+
+					endwhile;
+				endif; ?>
+
 			</ul>
 		</div>
 
 	</div>
 </div>
-<?php /*
-
-<?php $category = get_categories($args);  ?>
-
-<!-- slide -->
-<section class="box-content box-slide">
-	<div class="slide">
-		<div class="carousel slide" data-ride="carousel" data-interval="6000" id="slide">
-
-			<div class="carousel-inner" role="listbox">
-
-				<?php if( have_rows('slide') ):
-					$slide = 0;
-					while ( have_rows('slide') ) : the_row();
-
-						if(get_sub_field('imagem')){
-							$slide = $slide+1; ?>
-
-							<div class="item <?php if($slide == 1){ echo 'active'; } ?>" style="background-image: url('<?php the_sub_field('imagem'); ?>');">
-
-								<div class="box-height">
-									<div class="box-texto">
-										
-										<img src="<?php the_field('ico_listagem',$category[0]->taxonomy.'_'.$category[0]->term_id); ?>" alt="<?php echo $category[0]->name; ?>" />
-										<h2 class="title_page"><?php the_title(); ?></h2>
- 
-										<p class="texto"><?php the_sub_field('texto'); ?></p>
-										<?php if(get_sub_field('sub_texto')){ ?>
-											<p class="sub-texto"><?php the_sub_field('sub_texto'); ?></p>
-										<?php } ?>
-
-									</div>
-								</div>
-								
-							</div>
-
-						<?php }
-
-					endwhile;
-				endif; ?>
-
-			</div>
-
-			<ol class="carousel-indicators">
-				
-				<?php for($i=0; $i<$slide; $i++){ ?>
-					<li data-target="#slide" data-slide-to="<?php echo $i; ?>" class="<?php if($i == 0){ echo 'active'; } ?>"></li>
-				<?php } ?>
-				
-			</ol>
-
-		</div>
-
-	</div>
-</section>
-
-<section class="box-content box-sobre sombra">
-	<div class="container">
-		
-		<div class="content-post">
-			<?php the_content(); ?>
-		</div>
-
-	</div>
-</section>
-
-<?php if(get_field('imagem')){ ?>
-	<img src="<?php the_field('imagem'); ?>" class="img-destaque" alt=""/>
-<?php } ?>
-
-<section class="box-content box-sobre sombra">
-	<div class="container">
-
-		<div class="content-post">
-			<?php if(get_field('titulo')){ ?>
-				<h5><?php the_field('titulo'); ?></h5>
-			<?php } ?>
-			<?php the_field('texto_adicional'); ?>
-		</div>
-
-		<?php /*
-		<div class="autor">
-			<span class="ico"></span>
-			<span class="nome-data"><span class="nome"><?php echo get_the_author(); ?></span>&nbsp;&nbsp;|&nbsp;&nbsp;<?php the_date(); ?></span>
-		</div>
-		*/  /* ?>
-	</div>
-</section>
-
-<section class="box-content box-sobre sombra no-padding">
-	<div class="container">
-
-		<h5 class="veja-mais">VEJA MAIS NOTÍCIAS <br> RELACIONADAS</h5>
-
-		<div class="grid">
-			<?php
-				$produto = get_previous_post();
-				if($produto){ $terms = get_the_category($produto->ID); ?>
-					<div class="grid-item grid-left">
-						<div class="">
-							<a href="<?php the_permalink($produto->ID); ?>" title="<?php echo $produto->post_title; ?>">
-								<article class="item">
-					
-									<img src="<?php the_field('imagem_listagem_post', $produto->ID); ?>" class="img-grid" alt="<?php echo $produto->post_title; ?>"/>
-
-									<div class="hover-grid">
-										<div class="cont-hover">
-											<img src="<?php the_field('ico_listagem',$terms[0]->taxonomy.'_'.$terms[0]->term_id); ?>" class="" alt=""/>
-											<span><?php echo $produto->post_title; ?></span>
-											<?php echo $terms[0]->name; ?>
-										</div>
-									</div>
-								</article>
-							</a>
-						</div>
-					</div>
-				<?php }
-			?>
-
-			<?php
-				$produto = get_next_post();
-				if($produto){ $terms = get_the_category($produto->ID); ?>
-					<div class="grid-item grid-right">
-						<div class="">
-							<a href="<?php the_permalink($produto->ID); ?>" title="<?php echo $produto->post_title; ?>">
-								<article class="item">
-					
-									<img src="<?php the_field('imagem_listagem_post', $produto->ID); ?>" class="img-grid" alt="<?php echo $produto->post_title; ?>"/>
-
-									<div class="hover-grid">
-										<div class="cont-hover">
-											<img src="<?php the_field('ico_listagem',$terms[0]->taxonomy.'_'.$terms[0]->term_id); ?>" class="" alt=""/>
-											<span><?php echo $produto->post_title; ?></span>
-											<?php echo $terms[0]->name; ?>
-										</div>
-									</div>
-								</article>
-							</a>
-						</div>
-					</div>
-				<?php }
-			?>
-		</div>
-
-	</div>
-</section>
 
 <script type="text/javascript">
-	jQuery(window).load(function(){
+	jQuery(document).ready(function(){
 
-		jQuery('.grid-item').each(function(){
-			jQuery('.hover-grid',this).height(jQuery(this).height());
+		jQuery('.responder').click(function(){
+			//alert(jQuery(this).attr('rel'));
+			jQuery(jQuery(this).attr('rel')).show();
+			//jQuery('#esposta0').show();
 		});
 
-	});
-
-	jQuery(window).resize(function(){
-		jQuery('.grid-item').each(function(){
-			jQuery('.hover-grid',this).height(jQuery(this).height());
+		jQuery('.close-responder').click(function(){
+			jQuery(this).parent().hide();
 		});
 	});
 </script>
-
-*/ ?>
