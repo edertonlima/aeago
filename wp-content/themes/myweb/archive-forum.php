@@ -97,6 +97,7 @@
 									<div class="collist-forum colNome branco">Minhas Publicações</div>
 									<div class="collist-forum colNum branco">Interações</div>	
 									<div class="collist-forum colUltPost branco">Último Post</div>
+									<div class="collist-forum colVer branco"><span></span></div>
 								</div>
 
 							</div>
@@ -124,6 +125,7 @@
 									<div class="collist-forum colNome branco">Publicações </div>
 									<div class="collist-forum colNum branco">Interações</div>	
 									<div class="collist-forum colUltPost branco">Último Post</div>
+									<div class="collist-forum colVer branco"><span></span></div>
 								</div>
 
 							</div>

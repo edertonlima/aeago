@@ -4,7 +4,7 @@
 		<div class="box-sidebar bg-cinza">
 			<h3 class="border center">TORNE-SE UM ASSOCIADO</h3>
 			<p class="center">Ao associar-se, você estará contribuindo para o fortalecimento da nossa classe, além de poder aproveitar os vários benefícios que oferecemos aos nossos sócios.</p>
-			<a href="#" class="button btn-full vermelho margin-top-20">QUERO SER SÓCIO!</a>
+			<a href="<?php echo get_home_url(); ?>/cadastro" class="button btn-full vermelho margin-top-20">QUERO SER SÓCIO!</a>
 		</div>
 	<?php endif; ?>
 

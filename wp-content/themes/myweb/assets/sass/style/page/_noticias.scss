@@ -23,7 +23,8 @@
 			font-size: 1rem;
 			line-height: 1.225rem;
 			text-transform: none;
-			font-weight: $regular;
+			font-weight: $medium;
+			//color: #000;
 		}
 
 		.list-noticias-mini {
@@ -40,6 +41,7 @@
 				h2 {
 					font-size: .9rem;
 					line-height: 1.125rem;
+					font-weight: $medium;
 				}
 
 				.data {

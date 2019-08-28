@@ -137,16 +137,18 @@
 		}else{
 			jQuery('.footer').css({position: 'relative'});
 		}
-	});
+	});*/
 
 	jQuery(window).scroll(function(){
 		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 400){
+		if(scroll_body > 0){
+			jQuery('body').addClass('scroll');
 			jQuery('.header').addClass('scroll_menu');
 		}else{
+			jQuery('body').removeClass('scroll');
 			jQuery('.header').removeClass('scroll_menu');
 		}
-	});*/
+	});
 </script>
 
 <!-- ZOPIM -->
@@ -182,9 +184,9 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 			<nav class="nav">
 				<ul>
-					<li class="">
+					<?php /* <li class="">
 						<a href="<?php echo get_home_url(); ?>" title="HOME">HOME</a>
-					</li>
+					</li> */ ?>
 
 					<li class="submenu">
 						<a href="<?php //echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">SOBRE <i class="fas fa-chevron-down"></i></a>
@@ -202,7 +204,11 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 					</li>
 
 					<li class="">
-						<a href="<?php //echo get_home_url(); ?>" title="CURSOS">CURSOS</a>
+						<a href="<?php echo get_home_url(); ?>/associado" title="CURSOS">ASSOCIADOS</a>
+					</li>
+
+					<li class="">
+						<a href="<?php echo get_home_url(); ?>/cursos" title="CURSOS">CURSOS</a>
 					</li>
 
 					<li class="">
@@ -210,7 +216,7 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 					</li>
 
 					<li class="submenu">
-						<a href="<?php //echo get_home_url(); ?>" title="NOTÍCIAS">NOTÍCIAS <i class="fas fa-chevron-down"></i></a>
+						<a href="<?php echo get_home_url(); ?>/eventos" title="NOTÍCIAS">NOTÍCIAS <i class="fas fa-chevron-down"></i></a>
 
 						<ul>
 							<li><a href="#"><i class="fas fa-chevron-right"></i>Agricultura</a></li>
@@ -232,7 +238,7 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 					<?php if ( $_SESSION['associado']['login'] != 'ok' ): ?>
 
 						<li class="">
-							<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" class="button associar-se" title="ASSOCIAR-SE">ASSOCIAR-SE</a>
+							<a href="<?php echo get_home_url(); ?>/cadastro" class="button associar-se" title="ASSOCIAR-SE">ASSOCIAR-SE</a>
 						</li>
 
 						<li class="">

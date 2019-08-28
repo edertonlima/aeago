@@ -205,7 +205,7 @@
 			}
 
 			&.colNum {
-				width: 150px;
+				width: 75px;
 				text-align: center;
 				font-size: $font-size;
 				line-height: $font-size+.5;
@@ -213,7 +213,7 @@
 			}
 
 			&.colUltPost {
-				width: 150px;
+				width: 120px;
 				padding: 0 0 0 20px;
 				font-size: $font-size;
 				line-height: $font-size+.5;
@@ -226,6 +226,16 @@
 
 				strong {
 					display: block;
+				}
+			}
+
+			&.colVer {
+				width: 90px;
+				padding: 0 0 0 20px;
+				text-align: center;
+				span {
+					display: block;
+					width: 90px;
 				}
 			}
 		}

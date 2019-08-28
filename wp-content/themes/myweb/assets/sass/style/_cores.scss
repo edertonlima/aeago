@@ -40,6 +40,10 @@
 		color: #ffffff;
 		border-color: $vermelho;
 
+		i {
+			color: #ffffff;
+		}
+
 		&:hover {
 			background-color: darken($vermelho, 10%);
 			border-color: darken($vermelho, 10%);

@@ -1,16 +1,33 @@
 <?php get_header(); ?>
 
 <?php //var_dump($_SESSION['associado']); ?>
-<section class="box-content padding-top-40 associado">
+<section class="box-content padding-top-40 associado list-horizontal">
 	<div class="container">
 		
 		<div class="row">
 			<div class="col-9">
 
+				<form action="<?php echo home_url( '/associado' ); ?>" class="row row-mini busca" method="post">
+					<fieldset class="col-6">
+						<input type="text" name="s" id="search" placeholder="Buscar Associado">
+						<input type="hidden" name="post_type" value="associado">
+						<button type="submit" class="button vermelho"><i class="fas fa-search"></i></button>
+					</fieldset>
+
+					<?php if(is_search()){ ?>
+						<div class="col-6">
+							<span class="result">
+								<span><?php _e( 'Resultados da pesquisa encontrados para', 'locale' ); ?>: "<?php the_search_query(); ?></span>
+							</span>
+						</div>
+					<?php } ?>
+				</form>
+
 				<div class="row row-mini">
 
 					<?php while ( have_posts() ) : the_post();
-						get_template_part( 'content-list-associado', get_post_format() );
+						get_template_part( 'content-list-horizontal-associado', get_post_format() );
+						//get_template_part( 'content-list-associado', get_post_format() );
 					endwhile; ?>
 
 				</div>

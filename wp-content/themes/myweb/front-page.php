@@ -95,60 +95,32 @@
 							wp_reset_query();
 						?>
 						<!-- NOTÍCIAS SECUNDÁRIA -->
+						
 
-						<div class="col-8 list-noticias-mini">
-							<div class="row row-mini item-noticias">
-								<div class="col-5 img-noticias">
-									<span class="label laranja">GESTÃO RURAL</span>
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+						<?php
+							if($eventos): ?>
+
+								<div class="col-8 list-noticias-mini">
+									<?php
+										get_template_part( 'content-list-evento', get_post_format() );
+										get_template_part( 'content-list-noticas2', get_post_format() );
+									?>
 								</div>
 
-								<div class="col-7 cont-noticias">
-									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-									<span class="data">30 de Junho, 2019</span>
-									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
-								</div>
-							</div>
+							<?php else: ?>
 
-							<div class="row row-mini item-noticias">
-								<div class="col-5 img-noticias">
-									<span class="label laranja">GESTÃO RURAL</span>
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
+								<div class="col-12 list-noticias-mini">
+									<div class="row row-mini item-noticias">
+										<?php
+											get_template_part( 'content-list-noticas3', get_post_format() );
+										?>
+									</div>
 								</div>
 
-								<div class="col-7 cont-noticias">
-									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-									<span class="data">30 de Junho, 2019</span>
-									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
-								</div>
-							</div>
+							<?php endif;
+						?>
 
-							<div class="row row-mini item-noticias">
-								<div class="col-5 img-noticias">
-									<span class="label laranja">GESTÃO RURAL</span>
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
-								</div>
 
-								<div class="col-7 cont-noticias">
-									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-									<span class="data">30 de Junho, 2019</span>
-									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
-								</div>
-							</div>
-
-							<div class="row row-mini item-noticias">
-								<div class="col-5 img-noticias">
-									<span class="label laranja">GESTÃO RURAL</span>
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cursos.jpg">
-								</div>
-
-								<div class="col-7 cont-noticias">
-									<h2>Agronegócio: Como nosso setor ajuda a mover o Brasil</h2>
-									<span class="data">30 de Junho, 2019</span>
-									<p>O agronegócio vem sustentando a economia brasileira, sendo um dos setores de maior participação no PIB.  Compreender como ele é formado permite saber como e onde vamos dê certo. </p>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>	

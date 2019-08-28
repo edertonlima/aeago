@@ -1,6 +1,5 @@
 <li class="item-forum">
 	<div class="header-post">
-		
 		<div class="table-forum">
 			<?php /*<div class="collist-forum"><!--<i class="fas fa-user"></i>--></div> */?>
 			<div class="collist-forum colNome">
@@ -29,7 +28,13 @@
 						echo '0';
 					endif;
 				?>
-			</div>	
+			</div>
+
+<?php 
+	$link_post = get_the_permalink();
+	if(get_field('autor-forum') == $_SESSION['associado']['id']){ $class_btn = 'azul'; }else{ $class_btn = 'laranja'; }
+?>
+
 			<div class="collist-forum colUltPost">
 				<span class="autor">
 					<?php
@@ -55,6 +60,13 @@
 					?>
 				</span>
 			</div>
+
+			<div class="collist-forum colVer">
+				<a href="<?php echo $link_post; ?>" 
+					class="button mini <?php echo $class_btn; ?>">
+					VER POST
+				</a>
+			</div>	
 		</div>
 
 	</div>

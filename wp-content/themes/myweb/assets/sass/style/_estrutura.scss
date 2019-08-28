@@ -5,6 +5,7 @@ html {
 body {
 	position: relative;
 	min-height: 100vh;
+	transition: height 0.6s linear;
 	//min-width: $width;
 }
 
@@ -76,7 +77,7 @@ body * {
 	}
 
 	.col-4:nth-child(3n+1) {
-		@include clear;
+		//@include clear;
 	}
 
 	&.row-mini {

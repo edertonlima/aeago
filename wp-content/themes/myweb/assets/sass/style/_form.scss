@@ -1,6 +1,11 @@
 form {
 	width: 100%;
+	@include box-sizing;
 	@include clear();
+
+	&.form-page {
+		padding: 50px;
+	}
 
 	.obs {
 		font-size: .9rem;
@@ -42,7 +47,7 @@ form {
 		border-bottom: 1px solid $cor-txt;
 		padding: 10px;
 		font-style: normal;
-		height: 95px;
+		height: 60px;
 		resize: vertical;
 		@include box-sizing;
 	}
@@ -51,7 +56,7 @@ form {
 		margin-top: 30px;
 		width: 100%;
 		float: left;
-		clear: both;
+		//clear: both;
 
 		&:first-chid {
 			margin-top: 0;
@@ -65,7 +70,45 @@ form {
 				clear: none;
 			}
 		}
+
+		&.form-footer {
+			padding-top: 50px;
+		}
 	}
+
+	&.busca {
+		margin-bottom: 40px;
+
+		fieldset {
+			padding-right: 94.4px!important;
+			position: relative;
+			margin: 0;
+			@include box-sizing;
+
+			button {
+				position: absolute;
+				right: 0;
+				top: 0;
+
+				i {
+					font-size: 1.125rem;
+				}
+			}
+		}
+
+		.result {
+			display: table;
+			vertical-align: middle;
+			height: 40px;
+
+			span {
+				display: table-cell;
+				vertical-align: middle;
+				line-height: 15px;
+			}
+		}
+	}
+
 
 
 	&.news {

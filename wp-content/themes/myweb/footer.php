@@ -102,7 +102,7 @@
 
 						<div class="header-modal">
 							<h2>MINHA ÁREA!</h2>
-							<h2 class="sub-tituto">Ainda não é um associado? <a href="#" class="link">Clique aqui!</a></h2>
+							<h2 class="sub-tituto">Ainda não é um associado? <a href="<?php echo get_home_url(); ?>/cadastro" id="" class="link">Clique aqui!</a></h2>
 
 							<?php if ( $_SESSION['associado']['login'] == 'erro'): ?>
 								<p class="msg-form erro"><strong>Algo não está certo <i class="far fa-frown"></i></strong>Por favor, certifique se os dados estão corretos e tente novamente.</p>
@@ -130,7 +130,105 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+
+		<div class="modal off" id="modal-cadastro">
+		<div class="vertical-center">
+			<div class="content-vertical">
+
+				<div class="content-modal">
+					<span class="close-modal">
+						<i class="fas fa-times"></i>
+					</span>
+
+					<div class="modal-scroll">
+						<div>
+
+							<div class="header-modal">
+								<h2>QUERO SER SÓCIO</h2>
+								<h2 class="sub-tituto">Já é uma associado? <a href="javascript:" class="link" id="open-login">Clique aqui!</a></h2>
+							</div>
+
+							<div class="body-modal">
+								<form id="login" action="<?php echo get_home_url(); ?>/associado" method="post" class="row row-mini">
+									<fieldset class="col-6">
+										<input type="text" name="nome" placeholder="Nome Completo">
+									</fieldset>
+									<fieldset class="col-6">
+										<input type="text" name="email" id="" placeholder="E-mail">
+									</fieldset>
+
+									<fieldset class="col-6">
+										<input type="text" name="nome" placeholder="Telefone">
+									</fieldset>
+									<fieldset class="col-6">
+										<input type="text" name="email" id="" placeholder="Celular">
+									</fieldset>
+
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="Data Nascimento">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="nome" placeholder="Matrícula">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="Formação">
+									</fieldset>
+
+									<fieldset class="col-4">
+										<input type="text" name="nome" placeholder="Telefone Comercial">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="Setor">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="Ramal">
+									</fieldset>
+
+									<fieldset class="col-4">
+										<input type="text" name="nome" placeholder="CPF">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="RG">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="CREA">
+									</fieldset>
+
+									<fieldset class="col-6">
+										<input type="text" name="nome" placeholder="Endereço">
+									</fieldset>
+									<fieldset class="col-2">
+										<input type="text" name="email" id="" placeholder="Nº">
+									</fieldset>
+									<fieldset class="col-4">
+										<input type="text" name="email" id="" placeholder="Bairro">
+									</fieldset>
+
+									<fieldset class="col-5">
+										<input type="text" name="email" id="" placeholder="CEP">
+									</fieldset>
+									<fieldset class="col-5">
+										<input type="text" name="email" id="" placeholder="Cidade">
+									</fieldset>
+									<fieldset class="col-2">
+										<input type="text" name="nome" placeholder="UF">
+									</fieldset>
+
+									<fieldset class="">
+										<button class="button grande vermelho" type="submit">CADASTRAR</button>
+										<span class="txt-legenda-btn">Não lembra sua senha? <a href="#" class="link"> Clique aqui!</a></span>
+									</fieldset>
+								</form>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<?php wp_footer(); ?>
 
@@ -140,6 +238,10 @@
 			// ABRE MODAL LOGIN
 			jQuery('#btn-login').click(function(){
 				jQuery('#modal-login').removeClass('off');
+			});
+
+			jQuery('#open-login').click(function(){
+				setTimeout(function(){ jQuery('#modal-login').removeClass('off'); }, 1000);
 			});
 
 			jQuery('#senha_login').focus(function(){
