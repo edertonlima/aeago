@@ -189,16 +189,16 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 					</li> */ ?>
 
 					<li class="submenu">
-						<a href="<?php //echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">SOBRE <i class="fas fa-chevron-down"></i></a>
+						<a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">SOBRE <i class="fas fa-chevron-down"></i></a>
 
 						<ul>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">História</a></li>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">Estatuto</a></li>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">Missão e Visão</a></li>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">Regime Interno</a></li>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">Diretoria Executiva</a></li>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">Conselho Fiscal</a></li>
-							<li><a href="<?php echo get_home_url(); ?>/" title="">Assessoria Técnica</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/historia" title="">História</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/estatuto" title="">Estatuto</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/missao-e-visao" title="">Missão e Visão</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/regime-interno" title="">Regime Interno</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/diretoria-executiva" title="">Diretoria Executiva</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/conselho-fiscal" title="">Conselho Fiscal</a></li>
+							<li><a href="<?php echo get_home_url(); ?>/assessoria-tecnica" title="">Assessoria Técnica</a></li>
 							<li><a href="<?php echo get_home_url(); ?>/associado" title="ASSOCIADOS">Associados</a></li>
 						</ul>
 					</li>
@@ -212,27 +212,41 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 					</li>
 
 					<li class="">
-						<a href="<?php //echo get_permalink(get_page_by_path('co-found')); ?>" title="EVENTOS">EVENTOS</a>
+						<a href="<?php echo get_home_url(); ?>/eventos" title="EVENTOS">EVENTOS</a>
 					</li>
 
 					<li class="submenu">
-						<a href="<?php echo get_home_url(); ?>/eventos" title="NOTÍCIAS">NOTÍCIAS <i class="fas fa-chevron-down"></i></a>
+						<a href="<?php echo get_home_url(); ?>/noticias" title="NOTÍCIAS">NOTÍCIAS <i class="fas fa-chevron-down"></i></a>
 
 						<ul>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Agricultura</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Agronegócio</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Ciência</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Energia</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Florestal</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Gestão Rural</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Mercado</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Política</a></li>
-							<li><a href="#"><i class="fas fa-chevron-right"></i>Tecnologia</a></li>
+
+							<?php
+								$args = array(
+								    'taxonomy'      => 'category',
+								    'parent'        => 0,
+								    'orderby'       => 'name', 
+								    'order'         => 'ASC',
+								    'hierarchical'  => 1,
+								    'pad_counts'    => 0
+								);
+								$categories = get_categories( $args );
+								foreach ( $categories as $category ){ ?>
+
+									<li>
+										<a href="<?php echo get_term_link($category->term_id); ?>" title="<?php echo $category->name; ?>">
+											<i class="fas fa-chevron-right"></i>
+											<?php echo $category->name; ?>
+										</a>
+									</li>
+									
+								<?php }
+							?>
+
 						</ul>
 					</li>
 
 					<li class="">
-						<a href="<?php //echo get_permalink(get_page_by_path('contato')); ?>" title="CONTATO">CONTATO</a>
+						<a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="CONTATO">CONTATO</a>
 					</li>
 
 					<?php if ( $_SESSION['associado']['login'] != 'ok' ): ?>

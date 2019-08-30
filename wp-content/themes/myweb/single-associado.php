@@ -1,3 +1,64 @@
+<?php
+	if( isset($_POST['candidato']) ):
+		if($_POST['candidato'] != ''):
+
+			$new_candidato = $_POST['candidato'];
+			$new_row = $_POST['candidato_row'];
+
+			if( have_rows('associados_votacao','option') ):
+				while ( have_rows('associados_votacao','option') ) : the_row();
+
+					$row_candidato = get_sub_field('candidato_votacao','option');
+					$row_candidato->ID.' = '.$new_candidato;
+
+					if($row_candidato->ID == $new_candidato):
+						$total_votos = get_sub_field('votos_votacao','option');
+						$total_votos = $total_votos+1;
+					endif;
+
+				endwhile;
+			endif;
+
+			update_sub_field( array('associados_votacao', $new_row, 'votos_votacao'), $total_votos , 'option' );
+			update_field( 'status_votacao_associado', true, $post->ID );
+
+		endif;
+	endif;
+
+//update_field( 'descricao_votação', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.', 'option' );
+
+/*
+			update_sub_row($selector, $row, $value, [$post_id])
+
+
+			'candidato_votacao','option'
+
+			update_sub_field( array('associados_votacao', 1, 'sub_repeater', 2, 'candidato_votacao'), 'This value is for repeater row 1, and sub_repeater row 2!' );
+
+			update_field( 'autor-forum', $autor, $candidato );
+
+			/*$new_post = array(
+				'post_title'	=> $_POST['forum_titulo'],
+				'post_content'  => $_POST['forum_texto'],
+				'post_excerpt'  => $_POST['forum_resumo'],
+				'post_type'		=> 'forum',
+				'post_status'	=> 'publish'
+			);*/
+
+			// insert the post into the database
+			//if($id_newPost = wp_insert_post( $new_post )):
+
+				//session_start();
+				//$autor = get_post( $_SESSION['associado']['id'] );
+				//echo '<br><br>'.$_SESSION['associado']['id'];
+				//var_dump($autor);
+				//update_field( 'autor-forum', $autor, $id_newPost );
+				//wp_set_post_terms( $id_newPost, $_POST['forum_categoria'], 'categoria_forum' );
+
+				//header("Location: " . get_permalink($id_newPost));
+			//endif;
+?>
+
 <?php get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>

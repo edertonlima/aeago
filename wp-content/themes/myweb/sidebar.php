@@ -32,31 +32,45 @@
 	<?php if (!is_page('sair')) :
 
 		// PROFISSIONAL EM DESTAQUE
-		get_template_part( 'content-associado-destaque', get_post_format() );
+		//get_template_part( 'content-associado-destaque', get_post_format() );
 
 	endif; ?>
 
 	<div class="box-sidebar border">
 		<h3 class="border mid"><span>CATEGORIAS</span></h3>
 		<ul class="categorias">
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Agricultura</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Agronegócio</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Ciência</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Energia</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Florestal</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Gestão Rural</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Mercado</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Política</a></li>
-			<li><a href="#"><i class="fas fa-chevron-right"></i>Tecnologia</a></li>
+
+			<?php
+				$args = array(
+				    'taxonomy'      => 'category',
+				    'parent'        => 0,
+				    'orderby'       => 'name',
+				    'order'         => 'ASC',
+				    'hierarchical'  => 1,
+				    'pad_counts'    => 0
+				);
+				$categories = get_categories( $args );
+				foreach ( $categories as $category ){ ?>
+
+					<li>
+						<a href="<?php echo get_term_link($category->term_id); ?>" title="<?php echo $category->name; ?>">
+							<i class="fas fa-chevron-right"></i>
+							<?php echo $category->name; ?>
+						</a>
+					</li>
+					
+				<?php }
+			?>
+
 		</ul>	
 	</div>
-
+<?php /*
 	<div class="box-sidebar bg-cinza margin-top-30">
 		<h3 class="border center">NEWSLETTER</h3>
 		<p class="center">Digite seu e-mail abaixo para assinar o nosso informativo e ficar por dentro de todas as novidades!</p>
 		<a href="#" class="button btn-full laranja margin-top-20">ASSINAR</a>
 	</div>
-
+*/ ?>
 	<div class="box-sidebar box-facebook">
 		<div class="fb-page" data-href="https://www.facebook.com/associadosaeago/" data-tabs="" data-width="" data-height="130" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/associadosaeago/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/associadosaeago/">AEAGO</a></blockquote></div>
 	</div>

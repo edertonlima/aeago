@@ -45,9 +45,11 @@
 
 								<span class="label nome-area">NÓTICIAS</span>
 								<div class="box-content-destaque">
-									<?php foreach ( $categorias as $categoria ) { ?>
+									<?php /* foreach ( $categorias as $categoria ) { ?>
 										<span class="label laranja"><?php echo $categoria->name; ?></span>
-									<?php } ?>									
+									<?php } */?>		
+
+									<span class="label laranja"><?php echo $categorias[0]->name; ?></span>							
 									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 										<h2><?php the_title(); ?></h2>
 									</a>
@@ -77,9 +79,10 @@
 
 								<div class="col-4 item-noticias">
 									<div class="img-noticias">
-										<?php foreach ( $categorias as $categoria ) { ?>
+										<?php /* foreach ( $categorias as $categoria ) { ?>
 											<span class="label laranja"><?php echo $categoria->name; ?></span>
-										<?php } ?>	
+										<?php } */ ?>	
+										<span class="label laranja"><?php echo $categorias[0]->name; ?></span>	
 										<img src="<?php if($imagem[0]){ echo $imagem[0]; } ?>">
 									</div>
 

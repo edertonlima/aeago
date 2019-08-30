@@ -103,5 +103,26 @@
 				}
 			}
 		}
+
+		.votacao {
+			margin-top: 30px;
+			padding-bottom: 30px;
+			border-bottom: 1px solid #f2f2f2;
+
+			h2 {
+				font-size: 1.5rem;
+				line-height: 1.250rem;
+				margin-bottom: 5px;
+			}
+
+			.button {
+				float: right;
+				margin-top: 45px;
+			}
+		}
+
+			.titulo-votacao {
+				margin: 70px 0 30px;
+			}
 	}
 }

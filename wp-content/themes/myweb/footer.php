@@ -7,15 +7,15 @@
 				</li>
 
 				<li class="submenu">
-					<a href="<?php //echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">SOBRE <i class="fas fa-chevron-down"></i></a>
+					<a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">SOBRE <i class="fas fa-chevron-down"></i></a>
 				</li>
 
 				<li class="">
-					<a href="<?php //echo get_home_url(); ?>" title="CURSOS">CURSOS</a>
+					<a href="<?php echo get_home_url(); ?>/cursos" title="CURSOS">CURSOS</a>
 				</li>
 
 				<li class="">
-					<a href="<?php //echo get_permalink(get_page_by_path('co-found')); ?>" title="EVENTOS">EVENTOS</a>
+					<a href="<?php echo get_home_url(); ?>/eventos" title="EVENTOS">EVENTOS</a>
 				</li>
 
 				<li class="">

@@ -78,6 +78,60 @@
 			</section>
 		<?php endif; ?>
 
+		<?php if(!get_field('status_votacao_associado')):
+			if( have_rows('associados_votacao','option') ): ?>
+
+				<div class="titulo-votacao">
+					<h2><?php the_field('titulo_votacao','option'); ?></h2>
+					<p><?php the_field('descricao_votacao','option'); ?></p>
+				</div>
+
+				<?php while ( have_rows('associados_votacao','option') ) : the_row();
+
+					$candidato = get_sub_field('candidato_votacao','option');
+					//var_dump($candidato); 
+
+					if($post->ID != $candidato->ID){ ?>
+
+						<div class="row row-mini item-list-horizontal votacao">
+							<div class="col-3">
+								<?php 
+									$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($candidato->ID), 'mini-post' ); 
+									if($imagem[0]){ ?>
+										<img src="<?php echo $imagem[0]; ?>">
+									<?php }
+								?>
+							</div>
+
+							<div class="col-7">
+
+									<span class="label azul">Engenheiro</span>
+									<h2><?php echo $candidato->post_title ?></h2>
+									
+									<?php the_excerpt(); ?>
+
+							</div>
+
+							<div class="col-2">
+								<form action="<?php the_permalink(); ?>" method="post">
+									<input type="hidden" name="candidato" value="<?php echo $candidato->ID; ?>">
+									<input type="hidden" name="candidato_row" value="<?php echo get_row_index(); ?>">
+									<button class="button mini laranja btn-votacao" type="submit">VOTAR</button>
+								</form>
+							</div>
+						</div>
+
+					<?php }
+				endwhile;
+			endif;
+		else: ?>
+
+				<div class="titulo-votacao">
+					<h2><?php the_field('titulo_votacao','option'); ?></h2>
+					<p><?php the_field('descricao_votacao_votado','option'); ?></p>
+				</div>
+
+		<?php endif; ?>
 
 
 <?php /*
@@ -226,21 +280,29 @@
 
 	</div>
 </section>
+*/
+?>
 
 <script type="text/javascript">
+	/*jQuery('.btn-votacao').click(function(){
+		candidato = jQuery(this).attr('rel');
+
+				$.postJSON("<?php echo get_home_url(); ?>/associado/ederton-lima", { 
+					candidato:candidato,
+				}, function(result){
+					alert();
+
+				});
+	});*/
+
+
 	jQuery(window).load(function(){
 
-		jQuery('.grid-item').each(function(){
-			jQuery('.hover-grid',this).height(jQuery(this).height());
-		});
+		
 
 	});
 
 	jQuery(window).resize(function(){
-		jQuery('.grid-item').each(function(){
-			jQuery('.hover-grid',this).height(jQuery(this).height());
-		});
+
 	});
 </script>
-
-*/ ?>

@@ -20,7 +20,7 @@ add_post_type_support( 'post', 'excerpt' );
 add_action( 'init', 'my_custom_init' );
 function my_custom_init() {
 	//remove_post_type_support( 'post', 'editor' );
-	remove_post_type_support('page', 'editor');
+	//remove_post_type_support('page', 'editor');
 	remove_post_type_support( 'page', 'thumbnail' );
 }
 
@@ -108,16 +108,16 @@ add_action( 'init', 'change_post_object' );
 */
 
 /* PAGINAS CONFIGURAÇÕES */ 
-//if( function_exists('acf_add_options_page') ) {
+if( function_exists('acf_add_options_page') ) {
 
-	/*acf_add_options_page(array(
-		'page_title' 	=> 'Slide Home',
-		'menu_title'	=> 'Slide Home',
-		'menu_slug' 	=> 'slide-home',
+	acf_add_options_page(array(
+		'page_title' 	=> 'Votação',
+		'menu_title'	=> 'Votação',
+		'menu_slug' 	=> 'votacao',
 		'capability'	=> 'edit_posts',
-		'redirect'		=> false,
-		'icon_url' 		=> 'dashicons-admin-collapse'
-	));*/
+		'redirect'		=> true,
+		'icon_url' 		=> 'dashicons-businessman'
+	));
 
 	/*acf_add_options_page(array(
 		'page_title' 	=> 'Formulários',
@@ -134,20 +134,20 @@ add_action( 'init', 'change_post_object' );
 		'menu_slug' 	=> 'configuracoes-geral',
 		'capability'	=> 'edit_posts',
 		'redirect'		=> true
-	));
+	));*/
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Configurações Gerais',
-		'menu_title'	=> 'Geral',
-		'parent_slug'	=> 'configuracoes-geral',
+		'page_title' 	=> 'Associados',
+		'menu_title'	=> 'Associados',
+		'parent_slug'	=> 'votacao',
 	));
 
-	acf_add_options_sub_page(array(
+	/*acf_add_options_sub_page(array(
 		'page_title' 	=> 'Projetos',
 		'menu_title'	=> 'Projetos',
 		'parent_slug'	=> 'configuracoes-geral',
-	));
-}*/
+	));*/
+}
 
 /* PAGINAÇÃO */
 function paginacao() {
@@ -282,6 +282,84 @@ function create_taxonomy_categoria_forum() {
 			),
         )
     );
+}
+
+
+
+// CURSOS
+add_action( 'init', 'create_post_type_cursos' );
+function create_post_type_cursos() {
+
+	$labels = array(
+	    'name' => _x('Cursos', 'post type general name'),
+	    'singular_name' => _x('Cursos', 'post type singular name'),
+	    'add_new' => _x('Adicionar novo', 'Post'),
+	    'add_new_item' => __('Addicionar novo Post'),
+	    'edit_item' => __('Editar Post'),
+	    'new_item' => __('Novo Post'),
+	    'all_items' => __('Todos as Posts'),
+	    'view_item' => __('Visualizar Post'),
+	    'search_items' => __('Procurar Post'),
+	    'not_found' =>  __('Nenhum post encontrado.'),
+	    'not_found_in_trash' => __('Nenhum post encontrado na lixeira.'),
+	    'parent_item_colon' => '',
+	    'menu_name' => 'Cursos'
+	);
+	$args = array(
+	    'labels' => $labels,
+	    'public' => true,
+	    'publicly_queryable' => true,
+	    'show_ui' => true,
+	    'show_in_menu' => true,
+	    'rewrite' => true,
+	    'capability_type' => 'post',
+	    'has_archive' => true,
+	    'hierarchical' => false,
+	    'menu_position' => null,
+	    'menu_icon' => 'dashicons-format-chat',
+	    'supports' => array('title','excerpt','editor')
+	  );
+
+    register_post_type( 'cursos', $args );
+}
+
+
+
+// EVENTOS
+add_action( 'init', 'create_post_type_eventos' );
+function create_post_type_eventos() {
+
+	$labels = array(
+	    'name' => _x('Eventos', 'post type general name'),
+	    'singular_name' => _x('Eventos', 'post type singular name'),
+	    'add_new' => _x('Adicionar novo', 'Post'),
+	    'add_new_item' => __('Addicionar novo Post'),
+	    'edit_item' => __('Editar Post'),
+	    'new_item' => __('Novo Post'),
+	    'all_items' => __('Todos as Posts'),
+	    'view_item' => __('Visualizar Post'),
+	    'search_items' => __('Procurar Post'),
+	    'not_found' =>  __('Nenhum post encontrado.'),
+	    'not_found_in_trash' => __('Nenhum post encontrado na lixeira.'),
+	    'parent_item_colon' => '',
+	    'menu_name' => 'Eventos'
+	);
+	$args = array(
+	    'labels' => $labels,
+	    'public' => true,
+	    'publicly_queryable' => true,
+	    'show_ui' => true,
+	    'show_in_menu' => true,
+	    'rewrite' => true,
+	    'capability_type' => 'post',
+	    'has_archive' => true,
+	    'hierarchical' => false,
+	    'menu_position' => null,
+	    'menu_icon' => 'dashicons-format-chat',
+	    'supports' => array('title','excerpt','editor')
+	  );
+
+    register_post_type( 'eventos', $args );
 }
 
 
